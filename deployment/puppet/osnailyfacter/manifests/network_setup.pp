@@ -29,17 +29,20 @@ define setup_bond_interfaces (
     if ! defined(L23network::L3::Ifconfig[$interface]) {
       # TODO implement bond options support
       #$bond_mode = $network_settings[$interface]['bond_mode']
+      $bond_mode = 4
       #$bond_miimon = $network_settings[$interface]['bond_miimon']
       #$bond_lacp_rate = $network_settings[$interface]['bond_lacp_rate']
       notify{"Stub for bond interface ${interface}":} #->
-      #l23network::l3::ifconfig{$interface:
-        #ipaddr          => $ipaddr,
-        #gateway         => $gateway,
-        #bond_mode       => $bond_mode,
+      $ipaddr = $network_settings[$interface]['ipaddr']
+      $gateway = $network_settings[$interface]['gateway']
+      l23network::l3::ifconfig{$interface:
+        ipaddr          => $ipaddr,
+        gateway         => $gateway,
+        bond_mode       => $bond_mode,
         #bond_miimon     => $bond_miimon,
         #bond_lacp_rate  => $bond_lacp_rate,
         #check_by_ping   => 'none'
-      #}
+      }
     }
   }
 }
