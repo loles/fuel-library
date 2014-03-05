@@ -27,6 +27,7 @@ class nova::api(
   $nova_quota_driver = 'nova.quota.NoopQuotaDriver',
   $nova_rate_limits  = undef,
   $nova_user_password= undef, #Empty password generates error and saves from non-working installation
+  $api_workers       = $::processorcount,
 ) {
 
   include nova::params
@@ -93,6 +94,7 @@ class nova::api(
     'DEFAULT/enabled_apis':     value => $enabled_apis;
     'DEFAULT/volume_api_class': value => $volume_api_class;
     'DEFAULT/keystone_ec2_url': value => "http://${auth_host}:5000/v2.0/ec2tokens";
+    'DEFAULT/osapi_compute_workers': value => $api_workers;
     'DEFAULT/quota_driver':     value => $nova_quota_driver;
   }
   nova_config {
