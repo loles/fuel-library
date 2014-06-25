@@ -17,7 +17,7 @@ case $production {
     class { 'keystone':
       admin_token     => 'ADMIN',
       catalog_type    => 'sql',
-      sql_connection => 'postgresql://' + $::fuel_settings['postgres']['keystone_user'] + ':' + $::fuel_settings['postgres']['keystone_password'] + '@' + $::fuel_settings['ADMIN_NETWORK']['ipaddress'] + '/' + $::fuel_settings['postgres']['keystone_dbname'],
+      sql_connection => "postgresql://${::fuel_settings['postgres']['keystone_user']}:${::fuel_settings['postgres']['keystone_password']}@${::fuel_settings['ADMIN_NETWORK']['ipaddress']}/${::fuel_settings['postgres']['keystone_dbname']}",
     }
 
     keystone_tenant { 'admin' :
