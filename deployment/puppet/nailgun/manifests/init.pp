@@ -50,8 +50,8 @@ class nailgun(
   $puppet_master_hostname = "${hostname}.${domain}",
   $puppet_master_ip = $ipaddress,
 
-  $keystone_admin_token = $::fuel_settings['keystone']['admin_token'],
-  $keystone_host        = $::fuel_settings['ADMIN_NETWORK']['ipaddress'],
+  $keystone_admin_token = $keystone_admin_token,
+  $keystone_host        = $keystone_host,
 
   ) {
 

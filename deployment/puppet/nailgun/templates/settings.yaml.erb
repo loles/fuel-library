@@ -8,9 +8,10 @@ AUTH:
   # - keystone - authentication enabled.
   AUTHENTICATION_METHOD: "keystone"
   # use only if AUTHENTICATION_METHOD is set to "keystone"
-  KEYSTONE_ADMIN_TOKEN: "<%= @keystone_admin_token %>"
-  IDENTITY_URI: "http://<%= @keystone_host %>:35357/"
-
+  admin_token: "<%= @keystone_admin_token %>"
+  auth_host: "<%= @keystone_host %>"
+  auth_protocol: "http"
+  auth_version: "v2.0"
 
 DATABASE:
   engine: "<%= @database_engine %>"
