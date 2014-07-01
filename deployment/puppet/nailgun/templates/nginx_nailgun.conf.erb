@@ -37,7 +37,8 @@ server {
     }
 
     location ~ ^/keystone/(.*) {
-       proxy_pass http://<%= @keystone_host %>:5000/$1;
+        proxy_pass http://<%= @keystone_host %>:5000/$1;
+        proxy_buffering off;
     }
 
     location / {
